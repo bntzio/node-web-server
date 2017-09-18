@@ -1,0 +1,8 @@
+# modules
+node_modules/
+
+# logs
+*.log
+
+# other
+.DS_Store
