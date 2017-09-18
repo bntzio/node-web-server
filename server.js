@@ -1,24 +1,24 @@
 const express = require('express');
+const hbs = require('hbs');
 
 const app = express();
 
+app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-  res.send({
-    name: 'Enrique Benitez',
-    technologies: [
-      'nodejs',
-      'react',
-      'rails',
-      'vue',
-      'express'
-    ]
-  })
+  res.render('home.hbs', {
+    pageTitle: 'Hi there! 👋',
+    currentYear: new Date().getFullYear(),
+    welcomeMessage: 'Welcome to my website!'
+  });
 });
 
 app.get('/about', (req, res) => {
-  res.send('<h1>About Page</h1>');
+  res.render('about.hbs', {
+    pageTitle: 'About Page',
+    currentYear: new Date().getFullYear()
+  });
 });
 
 app.listen(3000, () => {
